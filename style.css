@@ -4,6 +4,12 @@ body {
   height: 100%;
 }
 
+/* CSS Custom Property */
+:root {
+  --contact-bg: orange;
+  --nav-bg: yellow;
+}
+
 /* navbar  */
 #navbar {
   overflow: hidden;
