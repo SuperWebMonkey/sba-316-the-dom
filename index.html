@@ -7,5 +7,63 @@
     <script src="./style.css"></script>
     <script defer src="./app.js"></script>
   </head>
-  <body></body>
+  <body>
+    <!-- navbar -->
+    <section id="navbar">
+      <a href="./home.html" class="page happy-elephant">Happy Elephant Thai</a>
+      <a href="./home.html" class="page home-page">Home</a
+      ><a href="./contact.html" class="page contact-page">Contact</a
+      ><a href="./about.html" class="page about-page">About</a>
+      <a href="#" class="page login" style="float: right">login</a>
+    </section>
+    <!-- contact form -->
+    <section id="contact-container">
+      <form action="contact-form">
+        <h2 id="contact-form-title">Contact Form</h2>
+        <label for="user-name">Username:</label>
+        <input
+          type="text"
+          id="uname"
+          name="username"
+          placeholder="username"
+          required
+        />
+        <label for="email"
+          >Email:<input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="email"
+            required
+        /></label>
+
+        <label for="subject" id="subject-label">Subject:</label>
+        <textarea
+          id="text-area"
+          name="text-area"
+          placeholder="Please write here..."
+          style="height: 200px"
+        ></textarea>
+
+        <input type="submit" value="Submit" />
+      </form>
+    </section>
+
+    <!-- footer -->
+    <footer id="my-footer">
+      <hr />
+      <div class="footer-content">
+        <a href="#" class="footer-icon" target="_self"
+          ><i class="fab fa-github"></i> </a
+        ><a href="#" class="footer-icon" target="_self"
+          ><i class="fab fa-linkedin"></i></a
+        ><a href="#" class="footer-icon" target="_self"
+          ><i class="fab fa-twitter"></i
+        ></a>
+      </div>
+      <div id="copy-right">
+        <h5>@2024 Shyguy, All rights reserved</h5>
+      </div>
+    </footer>
+  </body>
 </html>
