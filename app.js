@@ -1,8 +1,15 @@
-import "./styles.css";
+import "./style.css";
+
+// testing if the js file is connected
+console.log("hello world");
 
 // object of menu items, each category will contain 3-5 items
 const shopItems = {
-  appetizers: [{ name: "orange", price: 0.5 }],
+  appetizers: [
+    { name: "orange", price: 0.5 },
+    { name: "mandarin orange salse", price: 8.5 },
+    { name: "orange goat cheese bruschetta", price: 9.45 },
+  ],
   entrees: [
     { name: "orange chicken", price: 6.75 },
     { name: "orange pumpkin soup cup", price: 3.99 },
@@ -20,5 +27,9 @@ const contactEl = document.querySelector("#contact-container");
 contactEl.style.backgroundColor = "var(--contact-bg)";
 
 // Create a chart of selectable pictures
+
+// function for cart - adding the cart items, showing the cart items,
+
+// using bom alerts to get the username
 
 const submitBtn = document.getElementById("submit-btn");
