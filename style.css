@@ -117,11 +117,15 @@ body {
   background-color: darkorange;
 }
 
-.order-button {
+.order-button,
+.cart-button {
   background-color: var(--nav-bg);
   color: white;
   border-radius: 8px;
   width: 70px;
+}
+
+.cart-button {
 }
 
 /* Contact Form Styling */

@@ -50,10 +50,18 @@ menuItem.style.width = "500px";
 // console.log(menuItem);
 
 // using bom alerts to get the username
-const submitBtn = document.getElementById("submit-btn");
+const cartButton = document.createElement("button");
+cartButton.classList.add("cart-button");
+
+// Keep track of ordered items
+let orderedItems = {};
 
 // Function to create the food grid in the html page
 function createItems(ary) {
+  // may need to move it to global for the cart button function
+  let totalPrice = 0;
+  let totalItems = 0;
+
   ary.forEach((foodItem) => {
     const foodBox = document.createElement("div");
     foodBox.className = "food-box";
@@ -72,12 +80,57 @@ function createItems(ary) {
     foodBox.appendChild(price);
     foodBox.appendChild(button);
     menuItem.appendChild(foodBox);
+
+    // Count the number of items by items
+    let foodVal = foodItem.name;
+    // console.log(`food name ${foodVal}`);
+    if (orderedItems[foodVal]) {
+      orderedItems[foodVal]++;
+    } else {
+      orderedItems[foodVal] = 1;
+    }
+
+    // add event when the mouse is over the box
+    foodBox.addEventListener("mouseover", (e) => {
+      e.preventDefault();
+      console.log("mouseover event happens");
+    });
+
+    // Pop-up appears when the button is clicked
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+      totalPrice += Number(foodItem.price);
+      totalItems++;
+
+      alert(
+        `Total Items is ${totalItems} \ntotal price is ${roundNumber(
+          totalPrice
+        )}\n}`
+      );
+    });
   });
 }
 
-createItems(itemAry);
+// Need to add the cartButton
+cartButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const cartItems = Object.entries(orderedItems)
+    .map(([key, total]) => `${key}: ${total}`)
+    .join("\n");
+
+  if (cartItems) {
+    alert(`${cartItems}`);
+  } else {
+    alert(`No items ordered`);
+  }
+});
+
+function roundNumber(num) {
+  return Math.round(num * 100) / 100;
+}
 
 // click event for the button in the order menu
-const orderBtn = document.querySelector();
 
 // function for cart - adding the cart items, showing the cart items,
+
+createItems(itemAry);
