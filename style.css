@@ -89,6 +89,13 @@ body {
 }
 
 /* Menu Item Order Form */
+.order-title {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
 .menu-section {
   display: flex;
   justify-content: center;
@@ -106,7 +113,7 @@ body {
 .food-box {
   flex: 1 0 30%;
   border: 1px solid #333;
-  height: 220px;
+  height: 270px;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -22,6 +22,18 @@ const shopItems = {
   ],
 };
 
+const descriptionAry = [
+  "random description 1",
+  "random description 2",
+  "random description 3",
+  "random description 4",
+  "random description 5",
+  "random description 5",
+  "random description 7",
+  "random description 8",
+  "random description 9",
+];
+
 // Convert to an ary
 const menuAry = Object.keys(shopItems).map((key) => ({
   key,
@@ -44,6 +56,18 @@ for (let i = 0; i < menuAry.length; i++) {
 }
 // console.log(itemAry);
 
+// for the document frag
+const menuContainer = document.querySelector(".order-title");
+const docFrag = document.createDocumentFragment();
+const title = document.createElement("h1");
+title.textContent = "Order Selection:";
+const instruction = document.createElement("p");
+instruction.textContent =
+  "Select order to choose the item. Click the cart to finish ordering.";
+docFrag.appendChild(title);
+docFrag.appendChild(instruction);
+menuContainer.prepend(docFrag);
+
 // Create a chart of selectable pictures
 const menuItem = document.getElementById("menu");
 menuItem.style.width = "600px";
@@ -62,9 +86,9 @@ let orderedItems = {};
 // Function to create the food grid in the html page
 let totalPrice = 0;
 let totalItems = 0;
-function createItems(ary) {
+function createItems(ary, ary2) {
   // may need to move it to global for the cart button function
-
+  let i = 0;
   ary.forEach((foodItem) => {
     const foodBox = document.createElement("div");
     foodBox.className = "food-box";
@@ -79,6 +103,12 @@ function createItems(ary) {
     button.textContent = "order";
     button.className = "order-button";
 
+    // adding description
+    const details = ary2[i];
+    const pEl = document.createElement("p");
+    pEl.textContent = details;
+    i++;
+
     const foodImg = document.createElement("img");
     foodImg.className = "food-img";
     foodImg.setAttribute("src", "https://via.placeholder.com/50");
@@ -87,6 +117,7 @@ function createItems(ary) {
 
     foodBox.appendChild(foodImg);
     foodBox.appendChild(foodName);
+    foodBox.appendChild(pEl);
     foodBox.appendChild(price);
     foodBox.appendChild(button);
     menuItem.appendChild(foodBox);
@@ -159,4 +190,22 @@ function cartCount() {
   cartCount.textContent = totalItems;
 }
 
-createItems(itemAry);
+// change food item styling
+function foodStyling(ary) {
+  const divList = document.querySelectorAll("#menu > div");
+  // console.log(divList);
+  divList.forEach((div) => {
+    const firstChild = div.children[0];
+    const secondChild = div.children[1];
+    const thirdChild = div.children[2];
+    firstChild.style.borderRadius = "30%";
+    secondChild.style.color = "white";
+    thirdChild.style.fontStyle = "italic";
+  });
+}
+
+// add details function
+function addDetails(ary) {}
+
+createItems(itemAry, descriptionAry);
+foodStyling(descriptionAry);
