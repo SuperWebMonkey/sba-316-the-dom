@@ -83,8 +83,7 @@ const navbarEl = document.getElementById("navbar");
 const shopTitle = navbarEl.firstElementChild;
 
 // Get the submit button for the form
-const helpButton = document.querySelector(".it-button");
-// console.log(helpButton);
+const helpForm = document.querySelector("#help-form");
 
 // Keep track of ordered items
 let orderedItems = {};
@@ -201,10 +200,10 @@ shopTitle.addEventListener("mouseout", (e) => {
   shopTitle.textContent = shopTitle.textContent.toLowerCase();
 });
 
-helpButton.addEventListener("submit", (e) => {
+helpForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const name = document.querySelector("#contact-container #name");
+  const name = document.querySelector("#contact-container #uname");
   const email = document.querySelector("#contact-container #email");
   const errorMsg = document.querySelector("#contact-container #text-area");
   // const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -217,14 +216,12 @@ helpButton.addEventListener("submit", (e) => {
     isCorrect = false;
   }
 
-  alert("hello");
-
   if (isCorrect) {
     alert(
-      `Hello ${name.textContent}\n
+      `Hello ${name.value}\n
      We are letting you know that we received your message:\n
-     ${errorMsg.textContent}\n
-     We will contact you from your email, ${email}, if we have any further questions\n`
+     ${errorMsg.value}\n
+     We will contact you from your email, ${email.value}, if we have any further questions\n`
     );
   }
 });
