@@ -50,8 +50,7 @@ menuItem.style.width = "600px";
 // console.log(menuItem);
 
 // using bom alerts to get the username
-const cartButton = document.createElement("button");
-cartButton.classList.add("cart-button");
+const cartButton = document.querySelector(".cart");
 
 // Keep track of ordered items
 let orderedItems = {};
@@ -88,15 +87,6 @@ function createItems(ary) {
     foodBox.appendChild(button);
     menuItem.appendChild(foodBox);
 
-    // Count the number of items by items
-    let foodVal = foodItem.name;
-    // console.log(`food name ${foodVal}`);
-    if (orderedItems[foodVal]) {
-      orderedItems[foodVal]++;
-    } else {
-      orderedItems[foodVal] = 1;
-    }
-
     // add event when the mouse is over the box
     foodBox.addEventListener("mouseover", (e) => {
       e.preventDefault();
@@ -106,11 +96,20 @@ function createItems(ary) {
     // Pop-up appears when the button is clicked
     button.addEventListener("click", (e) => {
       e.preventDefault();
+      // Count the number of items by items
+      let foodVal = foodItem.name;
+      // console.log(`food name ${foodVal}`);
+      if (orderedItems[foodVal]) {
+        orderedItems[foodVal]++;
+      } else {
+        orderedItems[foodVal] = 1;
+      }
+
       totalPrice += Number(foodItem.price);
       totalItems++;
       // update the card count value in html
       cartCount();
-
+      // Alert the total item count and price
       alert(
         `Total Items is ${totalItems} \ntotal price is ${roundNumber(
           totalPrice
