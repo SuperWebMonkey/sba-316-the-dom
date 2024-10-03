@@ -22,6 +22,7 @@ const shopItems = {
   ],
 };
 
+// Object containing the description of each food item
 const descriptionAry = [
   "random description 1",
   "random description 2",
@@ -131,6 +132,7 @@ function createItems(ary, ary2) {
     // Pop-up appears when the button is clicked
     button.addEventListener("click", (e) => {
       e.preventDefault();
+      const isClicked = false;
       // Count the number of items by items
       let foodVal = foodItem.name;
       // console.log(`food name ${foodVal}`);
@@ -139,6 +141,9 @@ function createItems(ary, ary2) {
       } else {
         orderedItems[foodVal] = 1;
       }
+
+      foodImg.setAttribute("style", "border-radius:0");
+      foodName.setAttribute("style", "color: gold");
 
       totalPrice += Number(foodItem.price);
       totalItems++;
@@ -162,7 +167,14 @@ cartButton.addEventListener("click", (e) => {
     .join("\n");
 
   if (cartItems) {
-    alert(`${cartItems}`);
+    let isConfirm = confirm(
+      `Here's your order:\n${cartItems}\nClick ok to finish ordering`
+    );
+    if (isConfirm) {
+      location.reload();
+      alert("order has been complted.");
+    }
+    // resetCount();
   } else {
     alert(`No items ordered`);
   }
@@ -190,6 +202,12 @@ function cartCount() {
   cartCount.textContent = totalItems;
 }
 
+function resetCount() {
+  cartCount.textContent = 0;
+  totalPrice = 0;
+  totalItems = 0;
+}
+
 // change food item styling
 function foodStyling(ary) {
   const divList = document.querySelectorAll("#menu > div");
@@ -203,9 +221,6 @@ function foodStyling(ary) {
     thirdChild.style.fontStyle = "italic";
   });
 }
-
-// add details function
-function addDetails(ary) {}
 
 createItems(itemAry, descriptionAry);
 foodStyling(descriptionAry);
