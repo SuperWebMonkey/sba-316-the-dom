@@ -1,4 +1,5 @@
 // import "./style.css";
+"use strict";
 
 // testing if the js file is connected
 // console.log("hello world");
@@ -80,6 +81,10 @@ const cartButton = document.querySelector(".cart");
 // Getting the first a tag of the nav bar
 const navbarEl = document.getElementById("navbar");
 const shopTitle = navbarEl.firstElementChild;
+
+// Get the submit button for the form
+const helpButton = document.querySelector(".it-button");
+// console.log(helpButton);
 
 // Keep track of ordered items
 let orderedItems = {};
@@ -194,6 +199,34 @@ shopTitle.addEventListener("mouseover", (e) => {
 shopTitle.addEventListener("mouseout", (e) => {
   e.preventDefault();
   shopTitle.textContent = shopTitle.textContent.toLowerCase();
+});
+
+helpButton.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const name = document.querySelector("#contact-container #name");
+  const email = document.querySelector("#contact-container #email");
+  const errorMsg = document.querySelector("#contact-container #text-area");
+  // const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const bannedEmailRegex = /^[a-zA-Z0-9._%+-]+@protonmail.com$/;
+  const isCorrect = true;
+
+  if (bannedEmailRegex.test(email.value)) {
+    console.log("here");
+    alert(`Used a banned email`);
+    isCorrect = false;
+  }
+
+  alert("hello");
+
+  if (isCorrect) {
+    alert(
+      `Hello ${name.textContent}\n
+     We are letting you know that we received your message:\n
+     ${errorMsg.textContent}\n
+     We will contact you from your email, ${email}, if we have any further questions\n`
+    );
+  }
 });
 
 // update cart count
