@@ -18,12 +18,12 @@ The second part has to do with the validation of the form to the helpdesk.
 - Hovering over the shop title changes it
 
 ## Technologies used
--HTML
--CSS
--JS
--JS DOM
+- HTML
+- CSS
+- JS
+- JS DOM
 
 ## How to install
--git clone https://github.com/SuperWebMonkey/sba-316-the-dom.git
--cd to the SBA-316-THE-DOM folder
--click on the live server
+- git clone https://github.com/SuperWebMonkey/sba-316-the-dom.git
+- cd to the SBA-316-THE-DOM folder
+- click on the live server
