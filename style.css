@@ -40,7 +40,9 @@ body {
 }
 
 .happy-elephant::first-letter {
-  font-size: 30px;
+  /* font-size: 30px; */
+  font-weight: bold;
+  font-weight: 900;
 }
 
 .page:hover {
@@ -102,19 +104,26 @@ body {
 }
 
 .food-box {
-  flex: 1 0 25%;
+  flex: 1 0 30%;
   border: 1px solid #333;
-  height: 200px;
+  height: 220px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-left: 15px;
+  /* top left bottom right */
+  padding: 10px 15px 15px 10px;
   transition: background-color 0.3s;
 }
 
 .food-box:hover {
   background-color: darkorange;
+}
+
+.food-img {
+  /* width: 25%; */
+  /* height: 25%; */
+  display: block;
 }
 
 .order-button,
@@ -126,6 +135,7 @@ body {
 }
 
 .cart-button {
+  flex: 1 0 100%;
 }
 
 /* Contact Form Styling */

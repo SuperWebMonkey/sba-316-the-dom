@@ -46,7 +46,7 @@ for (let i = 0; i < menuAry.length; i++) {
 
 // Create a chart of selectable pictures
 const menuItem = document.getElementById("menu");
-menuItem.style.width = "500px";
+menuItem.style.width = "600px";
 // console.log(menuItem);
 
 // using bom alerts to get the username
@@ -57,10 +57,10 @@ cartButton.classList.add("cart-button");
 let orderedItems = {};
 
 // Function to create the food grid in the html page
+let totalPrice = 0;
+let totalItems = 0;
 function createItems(ary) {
   // may need to move it to global for the cart button function
-  let totalPrice = 0;
-  let totalItems = 0;
 
   ary.forEach((foodItem) => {
     const foodBox = document.createElement("div");
@@ -76,6 +76,13 @@ function createItems(ary) {
     button.textContent = "order";
     button.className = "order-button";
 
+    const foodImg = document.createElement("img");
+    foodImg.className = "food-img";
+    foodImg.setAttribute("src", "https://via.placeholder.com/50");
+    foodImg.setAttribute("width", 150);
+    foodImg.setAttribute("height", 70);
+
+    foodBox.appendChild(foodImg);
     foodBox.appendChild(foodName);
     foodBox.appendChild(price);
     foodBox.appendChild(button);
@@ -101,11 +108,13 @@ function createItems(ary) {
       e.preventDefault();
       totalPrice += Number(foodItem.price);
       totalItems++;
+      // update the card count value in html
+      cartCount();
 
       alert(
         `Total Items is ${totalItems} \ntotal price is ${roundNumber(
           totalPrice
-        )}\n}`
+        )}\n`
       );
     });
   });
@@ -129,8 +138,13 @@ function roundNumber(num) {
   return Math.round(num * 100) / 100;
 }
 
+// update cart count
+function cartCount() {
+  const cartCount = document.getElementById("cart-count");
+  cartCount.textContent = totalItems;
+}
+
 // click event for the button in the order menu
 
-// function for cart - adding the cart items, showing the cart items,
-
 createItems(itemAry);
+// function for cart - adding the cart items, showing the cart items,
