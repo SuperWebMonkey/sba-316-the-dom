@@ -52,6 +52,10 @@ menuItem.style.width = "600px";
 // using bom alerts to get the username
 const cartButton = document.querySelector(".cart");
 
+// Getting the first a tag of the nav bar
+const navbarEl = document.getElementById("navbar");
+const shopTitle = navbarEl.firstElementChild;
+
 // Keep track of ordered items
 let orderedItems = {};
 
@@ -137,13 +141,22 @@ function roundNumber(num) {
   return Math.round(num * 100) / 100;
 }
 
+// mouseover event on the shop title to change it to all capitals
+shopTitle.addEventListener("mouseover", (e) => {
+  e.preventDefault();
+  shopTitle.textContent = shopTitle.textContent.toUpperCase();
+});
+
+// mouseout event on the shop title to change back to lower case
+shopTitle.addEventListener("mouseout", (e) => {
+  e.preventDefault();
+  shopTitle.textContent = shopTitle.textContent.toLowerCase();
+});
+
 // update cart count
 function cartCount() {
   const cartCount = document.getElementById("cart-count");
   cartCount.textContent = totalItems;
 }
 
-// click event for the button in the order menu
-
 createItems(itemAry);
-// function for cart - adding the cart items, showing the cart items,
